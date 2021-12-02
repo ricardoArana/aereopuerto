@@ -22,9 +22,10 @@
                     <nav>
 
                         @if (App\Http\Controllers\UsuariosController::logueado())
-                            <a class="hover:text-blue-500 hover:underline" href="/xxxx">Logueado</a>
-                        @endif
-                    </nav>
+                        <form method="POST" action="/logout" class="hover:text-blue-500 hover:underline"> <input type="submit" value="Cerrar sesión">@csrf</form>
+                    @else
+                    <form method="GET" action="/login" class="hover:text-blue-500 hover:underline"> <input type="submit" value="Iniciar sesión">@csrf</form>
+                    @endif                    </nav>
                 </div>
             </header>
 

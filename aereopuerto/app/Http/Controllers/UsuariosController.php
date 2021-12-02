@@ -32,7 +32,10 @@ class UsuariosController extends Controller
 
         return redirect()->back()->with('error', 'Usuario o contraseña incorrectos.');
     }
-
+    public function logout(){
+        session()->forget('usuario');
+        return redirect()->back()->with('success', 'Has cerrado sesión');
+    }
     public static function logueado()
     {
         return request()->session()->has('usuario');
