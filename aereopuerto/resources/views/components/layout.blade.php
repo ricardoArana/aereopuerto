@@ -1,3 +1,7 @@
+@php
+
+use App\Http\Controllers\UsuariosController;
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -22,10 +26,16 @@
                     <nav>
 
                         @if (App\Http\Controllers\UsuariosController::logueado())
+                        <p>
+                            {{App\Http\Controllers\UsuariosController::mostrarUsuario())}}
+
+
+                        </p>
                         <form method="POST" action="/logout" class="hover:text-blue-500 hover:underline"> <input type="submit" value="Cerrar sesión">@csrf</form>
                     @else
                     <form method="GET" action="/login" class="hover:text-blue-500 hover:underline"> <input type="submit" value="Iniciar sesión">@csrf</form>
-                    @endif                    </nav>
+                    @endif
+                  </nav>
                 </div>
             </header>
 

@@ -40,4 +40,9 @@ class UsuariosController extends Controller
     {
         return request()->session()->has('usuario');
     }
+    public static function mostrarUsuario()
+    {
+        $usuario = DB::table('users')->where('email', '=', session()->get('usuario'))->select('name')->get();
+        return $usuario[0]->name;
+    }
 }
