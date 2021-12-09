@@ -27,7 +27,7 @@ use App\Http\Controllers\UsuariosController;
 
                         @if (App\Http\Controllers\UsuariosController::logueado())
                         <p>
-                            {{App\Http\Controllers\UsuariosController::mostrarUsuario())}}
+                            {{App\Http\Controllers\UsuariosController::mostrarUsuario()}}
 
 
                         </p>
