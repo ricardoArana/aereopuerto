@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/login', [UsuariosController::class, 'loginForm']);
 Route::post('/login', [UsuariosController::class, 'login']);
 Route::post('/logout', [UsuariosController::class, 'logout']);
+
+
