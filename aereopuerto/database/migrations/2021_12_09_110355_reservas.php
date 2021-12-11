@@ -20,7 +20,7 @@ class Reservas extends Migration
             $table->foreignId('vuelo_id')->constrained('vuelos');
             $table->decimal("asiento", 3, 0);
             $table->timestamp("fecha_hora");
-            $table->unique("vuelo_id", "asiento");
+            $table->unique(["vuelo_id", "asiento"]);
         });
     }
 

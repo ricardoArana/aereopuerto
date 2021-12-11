@@ -1,5 +1,5 @@
 <x-layout>
-
+    <p class="text-center text-3xl m-20"> Vuelos: </p>
     <table class="border-collapse border border-gray-400">
         <thead>
           <tr>
@@ -15,23 +15,24 @@
           </tr>
         </thead>
         <tbody>
-            @php
-            $vuelos = DB::table('vuelos')->get();
-            @endphp
             @foreach ($vuelos as $vuelo)
             <tr>
                 <td class="border border-gray-300">{{$vuelo->codigo}}</td>
-                <td class="border border-gray-300">{{$vuelo->origen_id}}</td>
-                <td class="border border-gray-300">{{$vuelo->destino_id}}</td>
-                <td class="border border-gray-300">{{$vuelo->compania_id}}</td>
+                <td class="border border-gray-300">{{$vuelo->origen}}</td>
+                <td class="border border-gray-300">{{$vuelo->destino}}</td>
+                <td class="border border-gray-300">{{$vuelo->compania}}</td>
                 <td class="border border-gray-300">{{$vuelo->salida}}</td>
                 <td class="border border-gray-300">{{$vuelo->llegada}}</td>
                 <td class="border border-gray-300">{{$vuelo->plazas}}</td>
                 <td class="border border-gray-300">{{$vuelo->precio}}</td>
-                <td><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" type="submit">Reservar</button></td>
+                <td>
+                    <a href="/{{$vuelo->id}}/reservas">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" type="submit">Reservar</button>
+                    </a>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
+    {{ $vuelos->links() }}
 </x-layout>

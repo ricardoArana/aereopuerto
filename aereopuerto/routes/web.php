@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\VuelosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VuelosController::class, 'index']);
+Route::get('/{id}/reservas', [VuelosController::class, 'reservas']);
+Route::post('/reservar/{id}', [VuelosController::class, 'reservar']);
+
 Route::get('/login', [UsuariosController::class, 'loginForm']);
 Route::post('/login', [UsuariosController::class, 'login']);
 Route::post('/logout', [UsuariosController::class, 'logout']);
+
 
 
