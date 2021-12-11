@@ -16,13 +16,13 @@ class Vuelos extends Migration
         Schema::create('vuelos', function (Blueprint $table){
             $table->id();
             $table->string('codigo', 6)->unique();
-            $table->foreignId('origen_id')->constrained('aereopuerto');
-            $table->foreignId('destino_id')->constrained('aereopuerto');
-            $table->foreignId('compania_id')->constrained('compania');
+            $table->foreignId('origen_id')->constrained('aereopuertos');
+            $table->foreignId('destino_id')->constrained('aereopuertos');
+            $table->foreignId('compania_id')->constrained('companias');
             $table->timestamp('salida');
             $table->timestamp('llegada');
-            $table->integer('plazas', 3);
-            $table->float('precio', 8, 2);
+            $table->decimal('plazas', 3, 0);
+            $table->decimal('precio', 8, 2);
 
         });
     }
