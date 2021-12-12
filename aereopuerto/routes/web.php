@@ -21,6 +21,7 @@ Route::get('/{id}/reservas', [VuelosController::class, 'reservas']);
 Route::post('/reservar/{id}', [VuelosController::class, 'reservar']);
 
 Route::get('/reservas', [ReservasController::class, 'index']); //Muestra las reservas
+Route::get('/reservas/borrar/{id}', [ReservasController::class, 'borrar']);
 
 Route::get('/login', [UsuariosController::class, 'loginForm']);
 Route::post('/login', [UsuariosController::class, 'login']);

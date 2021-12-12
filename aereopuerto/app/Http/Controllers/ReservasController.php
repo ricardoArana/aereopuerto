@@ -24,6 +24,12 @@ class ReservasController extends Controller
         ->get();
 
 
-        return view('tusReservas', ['reservas' => $reservas]);
+        return view('tusReservas', ['reservas' => $reservas, 'id' => $id]);
+    }
+    public function borrar($id){
+        $reservas = DB::table('reservas')->where('id', '=', $id)->get();
+        abort_unless($reservas,404);
+        DB::table('reservas')->where('id', $id)->delete();
+        return redirect()->back()->with('success', 'reserva borrada correctamente');
     }
 }

@@ -25,7 +25,7 @@
                 <td class="border border-gray-300">{{$reserva->llegada}}</td>
                 <td class="border border-gray-300">{{$reserva->precio}}</td>
                 <td>
-                    <a href="/{{$reserva->id}}/reserva">
+                    <a href="/reservas/borrar/{{$reserva->id}}">
                         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" type="submit">Borrar</button>
                     </a>
                 </td>
