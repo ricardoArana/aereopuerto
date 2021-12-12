@@ -48,6 +48,7 @@ class VuelosController extends Controller
         if(!session()->has('usuario')){
             return redirect('/')->with('error','tienes que estar logeado');
         }
+
         $user = DB::table('users')
         ->where('email', '=', session()->get('usuario'))
         ->select('id')
@@ -56,11 +57,17 @@ class VuelosController extends Controller
         $validados = request()->validate([
             'asiento' => 'required|integer',
         ]);
+        $ocupado = new VuelosController;
+        $ocupado = $ocupado->asientosOcupados($user[0]->id);
+        if (in_array($validados['asiento'], (array)$ocupado)){
+            return redirect('/')->with('error','ese asiento ya está reservado');
+        }
+
 
         $fecha = new DateTime();
         DB::table('reservas')
         ->insert([
-            'usuario_id' => ($user[0]->id),
+            'usuario_id' => ($id),
             'vuelo_id' => $id,
             'asiento' => $validados['asiento'],
             'fecha_hora' => ($fecha->format('d-m-Y H:i:s'))
