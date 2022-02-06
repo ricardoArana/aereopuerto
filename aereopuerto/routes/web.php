@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', [UsuariosController::class, 'loginForm']);
-Route::post('/login', [UsuariosController::class, 'login']);
-Route::post('/logout', [UsuariosController::class, 'logout']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

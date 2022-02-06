@@ -1,5 +1,5 @@
-<x-layout>
+<x-layout-layout>
 
 hola
 
-</x-layout>
+</x-layout-layout>
