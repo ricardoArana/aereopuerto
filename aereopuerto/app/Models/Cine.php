@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Cine extends Model
 {
     use HasFactory;
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
+
+    public function proyecciones()
+    {
+        return $this->hasMany(Proyeccion::class);
+    }
 }
