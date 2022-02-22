@@ -15,7 +15,10 @@ class PeliculaController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('welcome', [
+            'peliculas' => Pelicula::all(),
+        ]);
     }
 
     /**
