@@ -30,19 +30,19 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                @if (session()->has('error'))
-                <div class="bg-red-100 rounded-lg p-4 mt-4 mb-4 text-sm text-red-700" role="alert">
-                    <span class="font-semibold">Error:</span> {{ session('error') }}
-                </div>
-            @endif
-
-            @if (session()->has('success'))
-                <div class="bg-green-100 rounded-lg p-4 mt-4 mb-4 text-sm text-green-700" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
 
             </main>
+            @if (session()->has('error'))
+            <div class="bg-red-100 rounded-lg p-4 mt-4 mb-4 text-sm text-red-700" role="alert">
+                <span class="font-semibold">Error:</span> {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session()->has('success'))
+            <div class="bg-green-100 rounded-lg p-4 mt-4 mb-4 text-sm text-green-700" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         </div>
     </body>
 </html>
