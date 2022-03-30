@@ -1,9 +1,11 @@
-<x-layout>
-@foreach ($peliculas as $pelicula)
-<h1>Peliculas:</h1>
-    <ul>
-        <li>{{$pelicula->titulo}}</li>
-        <li>{{$pelicula->duracion}}</li>
-    </ul>
-@endforeach
-</x-layout>
+<x-guest-layout>
+    <h1>Peliculas:</h1>
+    @foreach ($peliculas as $pelicula)
+        <ul>
+            <li>{{$pelicula->sala}}</li>
+            <li>{{$pelicula->asiento}}</li>
+        </ul>
+    @endforeach
+</x-guest-layout>
+
+

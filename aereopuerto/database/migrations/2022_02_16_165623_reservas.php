@@ -18,6 +18,7 @@ class Reservas extends Migration
             $table->foreignId('cine_id')->constrained('cines');
             $table->smallInteger('sala');
             $table->smallInteger('asiento');
+            $table -> primary(['user_id', 'cine_id']);
             $table->timestamps();
         });
     }
