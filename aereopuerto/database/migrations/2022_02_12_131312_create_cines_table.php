@@ -17,8 +17,8 @@ class CreateCinesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->smallInteger('asientos');
-            $table->string('localidad');
-            $table->string('provincia');
+            $table->foreignId('localidad_id')->constrained('localidads');
+            $table->string('url');
             $table->timestamps();
         });
     }

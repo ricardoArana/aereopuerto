@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Proyeccions extends Migration
+class CreateLocalidadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class Proyeccions extends Migration
      */
     public function up()
     {
-        Schema::create('proyeccions', function (Blueprint $table) {
+        Schema::create('localidads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cine_id')->constrained('cines');
-            $table->foreignId('pelicula_id')->constrained('peliculas');
-            $table->smallInteger('sala');
-            $table->string('hora_inicio');
-            $table->unique(['cine_id', 'pelicula_id', 'hora_inicio']);
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class Proyeccions extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('localidads');
     }
 }

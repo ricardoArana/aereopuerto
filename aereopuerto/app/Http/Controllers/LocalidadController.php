@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCineRequest;
-use App\Http\Requests\UpdateCineRequest;
-use App\Models\Cine;
+use App\Http\Requests\StoreLocalidadRequest;
+use App\Http\Requests\UpdateLocalidadRequest;
 use App\Models\Localidad;
 
-class CineController extends Controller
+class LocalidadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class CineController extends Controller
      */
     public function index()
     {
-        return view('dashboard', [
-            'localidads' => Localidad::all(),
-            'cines' => Cine::all(),
-        ]);
+        //
     }
 
     /**
@@ -35,10 +31,10 @@ class CineController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCineRequest  $request
+     * @param  \App\Http\Requests\StoreLocalidadRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCineRequest $request)
+    public function store(StoreLocalidadRequest $request)
     {
         //
     }
@@ -46,10 +42,10 @@ class CineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cine  $cine
+     * @param  \App\Models\Localidad  $localidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Cine $cine)
+    public function show(Localidad $localidad)
     {
         //
     }
@@ -57,10 +53,10 @@ class CineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cine  $cine
+     * @param  \App\Models\Localidad  $localidad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cine $cine)
+    public function edit(Localidad $localidad)
     {
         //
     }
@@ -68,11 +64,11 @@ class CineController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCineRequest  $request
-     * @param  \App\Models\Cine  $cine
+     * @param  \App\Http\Requests\UpdateLocalidadRequest  $request
+     * @param  \App\Models\Localidad  $localidad
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCineRequest $request, Cine $cine)
+    public function update(UpdateLocalidadRequest $request, Localidad $localidad)
     {
         //
     }
@@ -80,10 +76,10 @@ class CineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cine  $cine
+     * @param  \App\Models\Localidad  $localidad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cine $cine)
+    public function destroy(Localidad $localidad)
     {
         //
     }

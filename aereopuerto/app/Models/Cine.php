@@ -18,4 +18,9 @@ class Cine extends Model
     {
         return $this->hasMany(Proyeccion::class);
     }
+
+    public function localidad()
+    {
+        return $this->belongsTo(Localidad::class);
+    }
 }

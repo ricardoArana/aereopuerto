@@ -21,6 +21,8 @@ class CreatePeliculasTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->addColumn('interval', 'duracion');
+            $table->string('url');
+            $table->string('sinopsis', 65535);
             $table->timestamps();
         });
     }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePeliculaRequest;
 use App\Http\Requests\UpdatePeliculaRequest;
+use App\Models\Cine;
 use App\Models\Pelicula;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class PeliculaController extends Controller
@@ -16,9 +18,9 @@ class PeliculaController extends Controller
      */
     public function index()
     {
-        return view('welcome', [
-            'peliculas' => Auth::user()->reservas,
-        ]);
+/*         return view('dashboard', [
+            'cines' => Cine::all(),
+        ]); */
     }
 
     /**

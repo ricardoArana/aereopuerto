@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CineController;
 use App\Http\Controllers\PeliculaController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PeliculaController::class, 'index'])
+Route::get('/', [CineController::class, 'index'])
 ->name('inicio');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+/* Route::get('/{localidad}', [CineController::class, 'getByLocalidad'])
+->name('localidad'); */
+
+Route::get('/dashboard', [CineController::class, 'index'])
+->middleware(['auth'])->name('dashboard');
+
+
+
+
+Route::get('/livewire', ['render'])
+->name('inicio');
+
 
 require __DIR__.'/auth.php';
