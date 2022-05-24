@@ -17,18 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CineController::class, 'index'])
 ->name('inicio');
+Route::get('/peliculas', [CineController::class, 'peliculas'])
+->name('peliculas');
 
-/* Route::get('/{localidad}', [CineController::class, 'getByLocalidad'])
-->name('localidad'); */
+/* Route::get('/dashboard', [CineController::class, 'index'])
+->middleware(['auth'])->name('dashboard'); */
 
-Route::get('/dashboard', [CineController::class, 'index'])
-->middleware(['auth'])->name('dashboard');
-
-
-
-
-Route::get('/livewire', ['render'])
-->name('inicio');
+/* Route::get('/livewire', ['render'])
+->name('inicio'); */
 
 
 require __DIR__.'/auth.php';

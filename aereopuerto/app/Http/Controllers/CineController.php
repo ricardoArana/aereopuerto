@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCineRequest;
 use App\Http\Requests\UpdateCineRequest;
 use App\Models\Cine;
 use App\Models\Localidad;
+use App\Models\Pelicula;
 
 class CineController extends Controller
 {
@@ -19,6 +20,13 @@ class CineController extends Controller
         return view('dashboard', [
             'localidads' => Localidad::all(),
             'cines' => Cine::all(),
+        ]);
+    }
+
+    public function peliculas()
+    {
+        return view('peliculas', [
+            'peliculas' => Pelicula::all(),
         ]);
     }
 

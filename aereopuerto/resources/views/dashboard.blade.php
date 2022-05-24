@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="w-full bg-blue-900 h-16"></div>
+    <div class="w-full h-16"></div>
 
     <livewire:counter />
 
