@@ -19,6 +19,8 @@ Route::get('/', [CineController::class, 'index'])
 ->name('inicio');
 Route::get('/peliculas', [CineController::class, 'peliculas'])
 ->name('peliculas');
+Route::get('/reserva/{proyeccion}', [CineController::class, 'reserva'])
+->name('reserva');
 
 /* Route::get('/dashboard', [CineController::class, 'index'])
 ->middleware(['auth'])->name('dashboard'); */

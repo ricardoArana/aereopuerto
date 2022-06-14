@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCineRequest;
 use App\Models\Cine;
 use App\Models\Localidad;
 use App\Models\Pelicula;
+use App\Models\Proyeccion;
 
 class CineController extends Controller
 {
@@ -27,6 +28,14 @@ class CineController extends Controller
     {
         return view('peliculas', [
             'peliculas' => Pelicula::all(),
+        ]);
+    }
+
+    public function reserva(Proyeccion $proyeccion)
+    {
+        return view('reserva', [
+            'peliculas' => Pelicula::all(),
+            'proyeccion' => $proyeccion,
         ]);
     }
 

@@ -11,17 +11,14 @@ class Counter extends Component
 
     public $localidadLive = 'Sanlúcar de Bda';
     public $cineLive = 'cine1';
-    public $pel_id;
 
     public function render()
     {
         $cines = Localidad::where('nombre', $this->localidadLive)->get()[0]->cines;
-        $proyecciones = Cine::where('nombre', $this->cineLive, 'pelicula_id', $this->pel_id)->get()[0]->proyecciones;
         $cineSelect= Cine::where('nombre', $this->cineLive)->get()[0];
         return view('livewire.counter', [
             'localidads' => Localidad::all(),
             'cines' => $cines,
-            'proyecciones' => $proyecciones,
             'cineSelect' => $cineSelect,
             'peliculas' => $this->peliculasByProyeccion(),
         ]);
@@ -35,5 +32,7 @@ class Counter extends Component
         }
         return $peliculasColl->unique();
     }
+
+
 
 }

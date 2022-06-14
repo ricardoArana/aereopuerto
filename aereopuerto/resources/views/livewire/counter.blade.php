@@ -46,22 +46,24 @@
                 Lo sentimos, parece que no hay películas disponibles para este cine</p>
         @endif
         @foreach ($peliculas as $pelicula)
-        @php
-            $pel_id = $pelicula->id;
-        @endphp
             <div class="flex justify-between mt-20 pb-12 mb-10">
                 <div class="h-96 ml-40">
                     <img class="h-96 w-full" src="{{ URL($pelicula->url) }}" alt="imagen de la pelicula">
                 </div>
+
                 <div class="h-96 w-1/2 mr-44 ml-16 text-xl text-left">
                     <p class="text-3xl pb-3"><b>{{$pelicula->titulo}}</b></p>
                     {{$pelicula->sinopsis}}
-                    @foreach ($proyecciones as $proyeccion)
-                        <p>{{ $proyeccion->hora_inicio }}</p>
+                    @foreach ($pelicula->proyecciones as $proyeccion)
+                    @if ($proyeccion->cine->nombre == $cineLive)
+
+                        <p><button class="bg-blue-900 hover:bg-black text-white font-bold py-1 px-2 rounded-xl my-3"><a href="{{route('reserva', [$proyeccion])}}">{{$proyeccion->hora_inicio }}</a></button></p>
+                    @endif
+
                     @endforeach
 
                 </div>
             </div>
-        @endforeach
+            @endforeach
 
     </div>
