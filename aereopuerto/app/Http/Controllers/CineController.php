@@ -31,6 +31,13 @@ class CineController extends Controller
         ]);
     }
 
+    public function cines()
+    {
+        return view('cines', [
+            'cines' => Cine::all(),
+        ]);
+    }
+
     public function reserva(Proyeccion $proyeccion)
     {
         return view('reserva', [

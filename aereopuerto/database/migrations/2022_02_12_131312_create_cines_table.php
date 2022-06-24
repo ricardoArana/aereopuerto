@@ -16,6 +16,7 @@ class CreateCinesTable extends Migration
         Schema::create('cines', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('descripcion');
             $table->smallInteger('asientos');
             $table->foreignId('localidad_id')->constrained('localidads');
             $table->string('url');

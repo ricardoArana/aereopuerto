@@ -24,7 +24,7 @@
         <header class="w-full h-10">
             <div class="flex justify-between mx-36 my-10 p-1 border-b-2 border-y-blue-900">
                 <a class="text-3xl mr-24 ml-4 hover:animate-waving hover:text-blue-800" href="{{route('inicio')}}">Logo</a>
-                <a class="text-3xl hover:animate-waving hover:text-blue-800" href="#">Cines</a>
+                <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('cines')}}">Cines</a>
                 <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('peliculas')}}">Películas</a>
                 <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">FQ</a>
             </div>
@@ -35,10 +35,10 @@
         <footer class="flex justify-center bg-gray-900   w-full h-96 mt-1">
             <div class="bg-gray-100 mt-4 w-full mx-10 h-5/6">
                 <div class="grid grid-rows-3 grid-flow-col gap-4 bg-gray-100 h-4/5">
-                    <div class="absolute mt-6">
+                    <div class="absolute mt-10">
                         <p class="ml-44 text-2xl">cines.arana@gmail.com</p>
                     </div>
-                    <div class="inline-flex mt-14 ml-44 col-span-full">
+                    <div class="inline-flex mt-20 ml-44 col-span-full">
                         <a href="https://www.facebook.com/"><img class="mt-3 mr-1 w-8 h-8"
                                 src="{{ URL('img/facebook.png') }}" alt="facebook"></a>
                         <a href="https://www.instagram.com/"><img class="mt-1 mr-1 w-12 h-12"
@@ -48,23 +48,18 @@
                         <a href="https://www.youtube.com/"><img class="mt-3 mr-1 w-11 h-8"
                                 src="{{ URL('img/youtube.png') }}" alt="youtube"></a>
                     </div>
-                    <div class="col-span-2 row-span-4 text-right mr-44 mt-6">
+                    <div class="col-span-2 row-span-4 text-right mr-44 mt-10">
                         <p class="text-2xl">¿Tiene algún problema?</p>
                         <p class="text-xl mr-3 mt-2"> <a class="text-blue-600" href="#">Contacte</a> con nosotros</p>
                     </div>
                 </div>
             </div>
-            <div class="w-full absolute mt-32">
-                <p class="text-center text-3xl"> Nuestros Cines:</p>
-                <div class="mt-12 ml-32 mr-32">
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine1</a>
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine2</a>
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine3</a>
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine4</a>
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine5</a>
-                <a class="ml-20 text-xl hover:text-blue-800" href="#">Cine6</a>
-            </div>
+            <div class="w-full absolute mt-20">
+                <p class="text-center text-2xl hover:text-blue-600"><a href="{{route('cines')}}"> Nuestros Cines</a></p>
         </div>
+        <div class="w-full absolute mt-52">
+            <p class="text-center text-3xl hover:text-blue-600"><a href="{{route('inicio')}}"> Logo</a></p>
+    </div>
         </footer>
     </div>
     @livewireScripts
