@@ -14,6 +14,8 @@
             <div class="h-96 w-1/2 mr-44 ml-16 text-xl text-left">
                 <p class="text-3xl pb-3"><b>{{ $proyeccion->pelicula->titulo }}</b></p>
                 {{ $proyeccion->pelicula->sinopsis }}
+                <br> <br>
+                Sala {{$proyeccion->sala}}
 
             </div>
         </div>
@@ -75,7 +77,11 @@
     <div id="sitioSelec" class="mt-2 text-xl"></div>
     <div id="precio" class="mt-10 "></div>
     <div class="flex justify-center">
-        <button id="pagar" style="display: none" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-1 px-2 rounded-full my-5">Pagar</button>
+        <form class="py-4" action="{{ route('reservar', [$proyeccion->sala, 1]) }}" method="POST">
+            @method('POST')
+            @csrf
+        <button id="pagar" style="display: none" type="submit" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-1 px-2 rounded-full my-5">Pagar</button>
+        </form>
     </div>
     </div>
     </div>

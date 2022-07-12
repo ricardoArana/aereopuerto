@@ -26,9 +26,23 @@
                 <a class="text-3xl mr-24 ml-4 hover:animate-waving hover:text-blue-800" href="{{route('inicio')}}">Logo</a>
                 <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('cines')}}">Cines</a>
                 <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('peliculas')}}">Películas</a>
-                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">FQ</a>
+                @if (App\Http\Controllers\UsuariosController::logueado())
+                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">{{App\Http\Controllers\UsuariosController::mostrarUsuario()}}</a>
+                @endif
+                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="{{route('login')}}">Iniciar Sesión</a>
             </div>
         </header>
+{{--         @if (session()->has('error'))
+        <div class="bg-red-100 rounded-lg p-4 mt-4 mb-4 text-sm text-red-700" role="alert">
+            <span class="font-semibold">Error:</span> {{ session('error') }}
+        </div>
+    @endif
+
+    @if (session()->has('success'))
+        <div class="bg-green-100 rounded-lg p-4 mt-4 mb-4 text-sm text-green-700" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif --}}
         <main class="mx-1 h-auto mt-4 pb-10 bg-contain" style="background-image: url({{ URL('img/cineFondo.jpg') }})">
             {{ $slot }}
         </main>

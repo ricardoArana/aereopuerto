@@ -46,6 +46,15 @@ class CineController extends Controller
         ]);
     }
 
+    public function reservar($sala, $asiento)
+    {
+        if(!session()->has('usuario')){
+            return redirect('/');/* ->with('error','Para reservar debes iniciar sesión'); */
+        }
+
+        return redirect()->back();/* ->with('success','reserva hecha con exito'); */
+    }
+
     /**
      * Show the form for creating a new resource.
      *

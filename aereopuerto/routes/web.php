@@ -17,18 +17,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CineController::class, 'index'])
 ->name('inicio');
+
 Route::get('/peliculas', [CineController::class, 'peliculas'])
 ->name('peliculas');
+
 Route::get('/cines', [CineController::class, 'cines'])
 ->name('cines');
+
 Route::get('/reserva/{proyeccion}', [CineController::class, 'reserva'])
 ->name('reserva');
 
+Route::post('/reservar/{sala}/{asientos}', [CineController::class, 'reservar'])
+->name('reservar');
+
 /* Route::get('/dashboard', [CineController::class, 'index'])
 ->middleware(['auth'])->name('dashboard'); */
-
-/* Route::get('/livewire', ['render'])
-->name('inicio'); */
 
 
 require __DIR__.'/auth.php';
