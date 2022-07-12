@@ -26,10 +26,11 @@
                 <a class="text-3xl mr-24 ml-4 hover:animate-waving hover:text-blue-800" href="{{route('inicio')}}">Logo</a>
                 <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('cines')}}">Cines</a>
                 <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('peliculas')}}">Películas</a>
-                @if (App\Http\Controllers\UsuariosController::logueado())
-                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">{{App\Http\Controllers\UsuariosController::mostrarUsuario()}}</a>
-                @endif
+                @if (empty(Auth::user()))
                 <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="{{route('login')}}">Iniciar Sesión</a>
+                @else
+                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">{{Auth::user()->name}}</a>
+                @endif
             </div>
         </header>
 {{--         @if (session()->has('error'))
