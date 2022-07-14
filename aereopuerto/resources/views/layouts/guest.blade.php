@@ -17,23 +17,55 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @livewireStyles
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
     <div class="font-sans text-gray-900 antialiased">
         <header class="w-full h-10">
             <div class="flex justify-between mx-36 my-10 p-1 border-b-2 border-y-blue-900">
-                <a class="text-3xl mr-24 ml-4 hover:animate-waving hover:text-blue-800" href="{{route('inicio')}}">Logo</a>
-                <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('cines')}}">Cines</a>
-                <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{route('peliculas')}}">Películas</a>
+                <a class="text-3xl mr-24 ml-4 hover:animate-waving hover:text-blue-800"
+                    href="{{ route('inicio') }}">Logo</a>
+                <a class="text-3xl hover:animate-waving hover:text-blue-800" href="{{ route('cines') }}">Cines</a>
+                <a class="text-3xl hover:animate-waving hover:text-blue-800"
+                    href="{{ route('peliculas') }}">Películas</a>
                 @if (empty(Auth::user()))
-                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="{{route('login')}}">Iniciar Sesión</a>
+                    <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800"
+                        href="{{ route('login') }}">Iniciar Sesión</a>
                 @else
-                <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800" href="#">{{Auth::user()->name}}</a>
+                    {{-- <a class="text-3xl mr-4 hover:animate-waving hover:text-blue-800"
+                        href="#">{{ Auth::user()->name }}</a> --}}
+
+                    <div class="dropdown inline-block relative">
+                        <button class="hover:animate-waving font-semibold rounded inline-flex items-center">
+                            <span class="mr-1 text-3xl">{{ Auth::user()->name }}</span>
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu absolute hidden pt-2 text-xl w-44">
+                            <li class=""><a
+                                    class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                    href="#">Mis reservas</a></li>
+                            <li class=""><a
+                                    class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                    href="#">Necesito ayuda</a></li>
+                            <li class="">
+                                <form action="logout" method="post">
+                                    @csrf
+                                    <input type="submit" value="Cerrar Sesión" class="text-left w-44 bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"/>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 @endif
             </div>
         </header>
-{{--         @if (session()->has('error'))
+        {{-- @if (session()->has('error'))
         <div class="bg-red-100 rounded-lg p-4 mt-4 mb-4 text-sm text-red-700" role="alert">
             <span class="font-semibold">Error:</span> {{ session('error') }}
         </div>
@@ -44,7 +76,8 @@
             {{ session('success') }}
         </div>
     @endif --}}
-        <main class="mx-1 h-auto mt-4 pb-10 bg-contain" style="background-image: url({{ URL('img/cineFondo.jpg') }})">
+        <main class="mx-1 h-auto mt-4 pb-10 bg-contain"
+            style="background-image: url({{ URL('img/cineFondo.jpg') }})">
             {{ $slot }}
         </main>
         <footer class="flex justify-center bg-gray-900   w-full h-96 mt-1">
@@ -65,16 +98,19 @@
                     </div>
                     <div class="col-span-2 row-span-4 text-right mr-44 mt-10">
                         <p class="text-2xl">¿Tiene algún problema?</p>
-                        <p class="text-xl mr-3 mt-2"> <a class="text-blue-600" href="#">Contacte</a> con nosotros</p>
+                        <p class="text-xl mr-3 mt-2"> <a class="text-blue-600" href="#">Contacte</a> con nosotros
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="w-full absolute mt-20">
-                <p class="text-center text-2xl hover:text-blue-600"><a href="{{route('cines')}}"> Nuestros Cines</a></p>
-        </div>
-        <div class="w-full absolute mt-52">
-            <p class="text-center text-3xl hover:text-blue-600"><a href="{{route('inicio')}}"> Logo</a></p>
-    </div>
+                <p class="text-center text-2xl hover:text-blue-600"><a href="{{ route('cines') }}"> Nuestros
+                        Cines</a>
+                </p>
+            </div>
+            <div class="w-full absolute mt-52">
+                <p class="text-center text-3xl hover:text-blue-600"><a href="{{ route('inicio') }}"> Logo</a></p>
+            </div>
         </footer>
     </div>
     @livewireScripts
