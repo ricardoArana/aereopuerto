@@ -42,6 +42,7 @@
                     asientos = [];
                     sitios = document.forms["sitios"].elements.length;
                     for (let i = 0; i < sitios; i++) {
+                        document.forms["sitios"].elements[i].disabled = true;
                         if (document.forms["sitios"].elements[i].checked) {
                             asientos.push(i);
                         }
@@ -67,6 +68,7 @@
                         }
                         document.getElementById("precio").innerHTML= `Precio: ${asientos.length * 7}&euro;`
                     }
+                    document.getElementById("asientosPOST").value = asientos
                 }
         </script>
             <div>{{-- Boton de comprar --}}
@@ -77,10 +79,14 @@
     <div id="sitioSelec" class="mt-2 text-xl"></div>
     <div id="precio" class="mt-10 "></div>
     <div class="flex justify-center">
-        <form class="py-4" action="{{ route('reservar', [$proyeccion->sala, 1]) }}" method="POST">
+        <form class="py-4" action="{{ route('reservar') }}" method="POST">
             @method('POST')
             @csrf
-        <button id="pagar" style="display: none" type="submit" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-1 px-2 rounded-full my-5">Pagar</button>
+            <input hidden type="text" value="" id="asientosPOST" name="asientos">
+            <input hidden type="text" value="{{$proyeccion->pelicula->id}}" name="pel_id">
+            <input hidden type="text" value="{{$proyeccion->cine->id}}" name="cine_id">
+            <input hidden type="text" value="{{$proyeccion->sala}}" name="sala">
+        <input id="pagar" value="Pagar" style="display: none" type="submit" class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-1 px-2 rounded-full my-5">
         </form>
     </div>
     </div>

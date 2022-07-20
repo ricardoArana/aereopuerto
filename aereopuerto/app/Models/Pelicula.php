@@ -13,4 +13,9 @@ class Pelicula extends Model
     {
         return $this->hasMany(Proyeccion::class);
     }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reservas::class);
+    }
 }

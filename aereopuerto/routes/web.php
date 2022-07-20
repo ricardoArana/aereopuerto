@@ -27,7 +27,7 @@ Route::get('/cines', [CineController::class, 'cines'])
 Route::get('/reserva/{proyeccion}', [CineController::class, 'reserva'])
 ->name('reserva');
 
-Route::post('/reservar/{sala}/{asientos}', [CineController::class, 'reservar'])
+Route::post('/reservar', [CineController::class, 'reservar'])
 ->name('reservar');
 
 /* Route::get('/dashboard', [CineController::class, 'index'])

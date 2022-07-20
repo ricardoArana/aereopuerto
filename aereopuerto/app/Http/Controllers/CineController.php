@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Reserva;
 use App\Http\Requests\StoreCineRequest;
 use App\Http\Requests\UpdateCineRequest;
 use App\Models\Cine;
 use App\Models\Localidad;
 use App\Models\Pelicula;
 use App\Models\Proyeccion;
+use Illuminate\Support\Facades\Auth;
 
 class CineController extends Controller
 {
@@ -46,13 +48,35 @@ class CineController extends Controller
         ]);
     }
 
-    public function reservar($sala, $asiento)
+    public function reservar()
     {
-        if(!session()->has('usuario')){
-            return redirect('/');/* ->with('error','Para reservar debes iniciar sesión'); */
+        if(empty(Auth::user())){
+            return redirect('/')->with('error','Para reservar debes iniciar sesión');
         }
 
-        return redirect()->back();/* ->with('success','reserva hecha con exito'); */
+        $validado = request()->validate([
+            'sala' => 'required|string',
+            'pel_id' => 'required|string',
+            'cube_id' => 'required|string',
+            'asientos' => 'required|array'
+        ]);
+
+
+
+        //selecciono el usuario actual
+        $user = Auth::user();
+        //Hago tantas reservas como asientos haya
+        for ($i=0; $i < sizeof($validado['asientos']); $i++) {
+             $reserva = Reserva::create([
+                'user_id' => $user->id,
+                'cine_id' => $validado['cine_id'],
+                'pelicula_id' => $validado['pelicula_id'],
+                'sala' => $validado['sala'],
+                'asientos' => $validado['asientos']
+            ]);
+            $reserva->save();
+        }
+        return redirect('/')->with('success','Reserva realizada con éxito');
     }
 
     /**

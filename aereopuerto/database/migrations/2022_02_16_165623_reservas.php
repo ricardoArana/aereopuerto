@@ -16,6 +16,7 @@ class Reservas extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('cine_id')->constrained('cines');
+            $table->foreignId('pelicula_id')->constrained('peliculas');
             $table->smallInteger('sala');
             $table->smallInteger('asiento');
             $table -> primary(['user_id', 'cine_id']);

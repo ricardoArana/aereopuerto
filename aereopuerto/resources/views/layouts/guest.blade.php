@@ -65,7 +65,7 @@
                 @endif
             </div>
         </header>
-        {{-- @if (session()->has('error'))
+        @if (session()->has('error'))
         <div class="bg-red-100 rounded-lg p-4 mt-4 mb-4 text-sm text-red-700" role="alert">
             <span class="font-semibold">Error:</span> {{ session('error') }}
         </div>
@@ -75,7 +75,7 @@
         <div class="bg-green-100 rounded-lg p-4 mt-4 mb-4 text-sm text-green-700" role="alert">
             {{ session('success') }}
         </div>
-    @endif --}}
+    @endif
         <main class="mx-1 h-auto mt-4 pb-10 bg-contain"
             style="background-image: url({{ URL('img/cineFondo.jpg') }})">
             {{ $slot }}
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="w-full absolute mt-20">
-                <p class="text-center text-2xl hover:text-blue-600"><a href="{{ route('cines') }}"> Nuestros
+                <p class="text-center text-2xl"><a class="hover:text-blue-600" href="{{ route('cines') }}"> Nuestros
                         Cines</a>
                 </p>
             </div>

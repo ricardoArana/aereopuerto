@@ -18,4 +18,9 @@ class Reserva extends Model
     {
         return $this->belongsTo(Cine::class);
     }
+
+    public function pelicula()
+    {
+        return $this->belongsTo(Pelicula::class);
+    }
 }
