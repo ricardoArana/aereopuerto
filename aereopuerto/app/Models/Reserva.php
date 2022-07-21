@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
+    public $fillable = ['user_id', 'cine_id', 'pelicula_id', 'hora_inicio', 'sala', 'asiento'];
     use HasFactory;
 
     public function user()

@@ -14,12 +14,13 @@ class Reservas extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('cine_id')->constrained('cines');
             $table->foreignId('pelicula_id')->constrained('peliculas');
+            $table->string('hora_inicio');
             $table->smallInteger('sala');
             $table->smallInteger('asiento');
-            $table -> primary(['user_id', 'cine_id']);
             $table->timestamps();
         });
     }

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\Reserva;
+
 use App\Http\Requests\StoreCineRequest;
 use App\Http\Requests\UpdateCineRequest;
 use App\Models\Cine;
 use App\Models\Localidad;
 use App\Models\Pelicula;
 use App\Models\Proyeccion;
+use App\Models\Reserva;
 use Illuminate\Support\Facades\Auth;
 
 class CineController extends Controller
@@ -45,6 +46,9 @@ class CineController extends Controller
         return view('reserva', [
             'peliculas' => Pelicula::all(),
             'proyeccion' => $proyeccion,
+            'reservas' => Reserva::all()->where('cine_id', $proyeccion->cine->id)
+                            ->where('pelicula_id', $proyeccion->pelicula->id)
+                            ->where('hora_inicio', $proyeccion->hora_inicio)
         ]);
     }
 
@@ -56,26 +60,31 @@ class CineController extends Controller
 
         $validado = request()->validate([
             'sala' => 'required|string',
+            'hora_inicio' => 'required|string',
             'pel_id' => 'required|string',
-            'cube_id' => 'required|string',
-            'asientos' => 'required|array'
+            'cine_id' => 'required|string',
+            'asientos' => 'required|string'
         ]);
 
 
 
         //selecciono el usuario actual
         $user = Auth::user();
+
+        $asientosArray = explode(",", $validado['asientos']);
         //Hago tantas reservas como asientos haya
-        for ($i=0; $i < sizeof($validado['asientos']); $i++) {
+        for ($i=0; $i < sizeof($asientosArray); $i++) {
              $reserva = Reserva::create([
                 'user_id' => $user->id,
                 'cine_id' => $validado['cine_id'],
-                'pelicula_id' => $validado['pelicula_id'],
+                'pelicula_id' => $validado['pel_id'],
+                'hora_inicio' => $validado['hora_inicio'],
                 'sala' => $validado['sala'],
-                'asientos' => $validado['asientos']
+                'asiento' => $asientosArray[$i]
             ]);
             $reserva->save();
         }
+
         return redirect('/')->with('success','Reserva realizada con éxito');
     }
 
