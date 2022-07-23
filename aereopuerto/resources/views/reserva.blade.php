@@ -41,7 +41,9 @@
             <form action="" id="sitios" onsubmit="event.preventDefault()">
                 @for ($i = 1; $i < $asientos; $i++)
                     @if (gettype($i / 16) == 'integer')
-                        <br>
+                    <span class="text-xl"> {{$i/16}} </span>
+
+                       <br>
                     @endif
                     <label class="container" for="{{ $i }}">
                         <input type="checkbox" value="{{ $i }}" name="{{ $i }}"
@@ -110,14 +112,14 @@
                             filas = [];
                             columnas = [];
                             for (let i = 0; i < asientos.length; i++) {
-                                filas.push(Math.floor(asientos[i] / 16))
+                                filas.push(Math.floor(asientos[i] / 16 + 1))
                                 columnas.push(asientos[i] % 16)
                             }
                             document.getElementById("asientosSelec").innerHTML = `Ha seleccionado ${asientos.length} asientos.`
                             document.getElementById("sitioSelec").innerHTML += `Sus sitios son:`
                             for (let i = 0; i < filas.length; i++) {
                                 document.getElementById("sitioSelec").innerHTML += `<br> Fila: ${filas[i]} `
-                                document.getElementById("sitioSelec").innerHTML += ` Columna: ${columnas[i]}`
+                                document.getElementById("sitioSelec").innerHTML += ` Asiento: ${columnas[i]}`
 
                             }
                             document.getElementById("precio").innerHTML = `Precio: ${asientos.length * 7}&euro;`
